@@ -1,0 +1,34 @@
+{
+  "genesis_time": "2019-02-26T21:03:52.995357286Z",
+  "chain_id": "test-chain-LSUjmw",
+  "consensus_params": {
+    "block_size_params": {
+      "max_bytes": "22020096",
+      "max_gas": "-1"
+    },
+    "evidence_params": {
+      "max_age": "100000"
+    }
+  },
+  "validators": [
+    {
+      "address": "4F4AE1DE95C9E424F38FF682B7F9073C09DA47F3",
+      "pub_key": {
+        "type": "tendermint/PubKeyEd25519",
+        "value": "sLLovb/9wy7jDA0bsDz2jbvh9BP26wX1/YY6C5JjP/I="
+      },
+      "power": "10",
+      "name": ""
+    },
+//    {
+//      "address": "A0647159F1C3F7023AB6B6F01153BFBD27EFE79C",
+//      "pub_key": {
+//        "type": "tendermint/PubKeyEd25519",
+//        "value": "0vRhjcbvUvlRpwePeXix6wHPpBV5AG7B79dKFkSK/Mg="
+//      },
+//      "power": "10",
+//      "name": ""
+//    }
+  ],
+  "app_hash": ""
+}
