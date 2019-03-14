@@ -21,7 +21,9 @@ import {
   Table,
 } from 'reactstrap';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
-import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities'
+import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
+import axios from 'axios';
+import Constants from '../../utils/Constants';
 
 const Widget03 = lazy(() => import('../../views/Widgets/Widget03'));
 
@@ -483,7 +485,15 @@ class Dashboard extends Component {
   loading = () => <div className="animated fadeIn pt-1 text-center">Loading...</div>
 
   componentWillMount(){
-    
+    var url = `${Constants.LOTION_BASE_URL}/status`;
+    axios.get(url).then(res => {
+      this.setState({ totalNumberOfBlocks: res.data.result.sync_info.latest_block_height });
+    });
+
+    url = `${Constants.EXPRESS_BASE_URL}/total_number_of_transactions`;
+    axios.get(url).then(res => {
+      this.setState({ totalNumberOfTransactions: res.data.result });
+    });
   }
 
   render() {
@@ -508,7 +518,7 @@ class Dashboard extends Component {
                   </ButtonDropdown>
                 </ButtonGroup>
                 <div className="text-value">{this.state.totalNumberOfBlocks}</div>
-                <div>Members online</div>
+                <div>Total number of blocks</div>
               </CardBody>
               <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Line data={cardChartData2} options={cardChartOpts2} height={70} />
@@ -532,7 +542,7 @@ class Dashboard extends Component {
                   </Dropdown>
                 </ButtonGroup>
                 <div className="text-value">{this.state.totalNumberOfTransactions}</div>
-                <div>Members online</div>
+                <div>Total number of transactions</div>
               </CardBody>
               <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Line data={cardChartData1} options={cardChartOpts1} height={70} />

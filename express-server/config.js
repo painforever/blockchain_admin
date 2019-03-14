@@ -8,11 +8,10 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
-connection.query('SELECT * from blocks LIMIT 1', function (err, rows, fields) {
-  if (err) throw err;
-
-  console.log('The solution is: ', rows[0]);
-})
+// connection.query('SELECT * from blocks LIMIT 1', function (err, rows, fields) {
+//   if (err) throw err;
+//   console.log('The solution is: ', rows[0]);
+// })
 
 module.exports = connection;
 //connection.end();
